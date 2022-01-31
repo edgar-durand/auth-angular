@@ -1,0 +1,16 @@
+<mat-card>
+  <app-article-autocomplete
+    class="ml-2"
+    [isListInSync]="isListInSync"
+    [relatedArticles]="comment.relatedArticles"
+    [commentId]="comment.id"
+    (onUpdateArticles)="onUpdateArticles()"
+    (onSyncArticles)="onSyncArticles($event)"
+  ></app-article-autocomplete>
+  <div class="comment-card">
+    <span class="comment-body">{{comment.content}}</span>
+    <app-comment-menu [commentId]="comment.id" (handleDelete)="onDelete($event)"
+      (handleEditing)='onEditing($event)'>
+    </app-comment-menu>
+  </div>
+</mat-card>

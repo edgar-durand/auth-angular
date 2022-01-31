@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chip-list-wrapper {
+  flex: 1 1 auto;
+  width: 80%;
+}
+.chip-list {
+  width: 100%;
+}
+

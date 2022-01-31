@@ -1,0 +1,12 @@
+div {
+  position: relative;
+  white-space: break-spaces;
+
+  p:last-of-type {
+    color: transparent;
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+}

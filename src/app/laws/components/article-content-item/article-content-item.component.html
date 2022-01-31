@@ -1,0 +1,21 @@
+<mat-expansion-panel *ngIf="show" [expanded]="true" >
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div>
+        Versión del {{ articleContent.date }} {{ !articleContent.textOk && hasMoreVersions ? '(No ha sido revisado)' : null }}
+      </div>
+      <button mat-stroked-button *ngIf="articleContent.textOk && hasPreviousVersions" (click)="edit($event)" class="edit-btn">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <app-highlightable *ngIf="selections$ | async as selections"
+    [text]="articleContent.textOk || articleContent.text"
+    [articleContentId]="articleContent.id"
+    (selectedText)="onSelectedText($event)"
+  ></app-highlightable>
+</mat-expansion-panel>
+
+

@@ -1,0 +1,29 @@
+.higlight-cursor {
+  cursor: url('/assets/mark_text_cursor.svg'), auto;
+}
+
+main {
+  padding: 0 0 0 40px;
+  margin-top: 64px;
+}
+
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 999
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+mat-icon {
+  margin-right: 5px;
+}
+.pointer {
+  cursor: pointer;
+}
+.yellow-bg {
+  color: #ffb407;
+}
+

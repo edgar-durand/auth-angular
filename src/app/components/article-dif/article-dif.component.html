@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>Comparacion de versiones</h2>
+<mat-dialog-content class='mat-typography'>
+  <div class="head-line">
+    <h2>{{ 'Version:' + data.previousVersion.date }}</h2>
+    <div style="display: flex">
+      <h2>Articulo final</h2>
+<!--      <mat-icon class="result">help_outline</mat-icon>-->
+<!--      <div id="display-result"></div>-->
+    </div>
+
+    <h2>Version: {{data.currentVersion.date}}</h2>
+  </div>
+  <div class="comparison">
+    <div id="display-left">
+      <p>{{data.previousVersion?.textOk}}</p>
+    </div>
+    <div style="flex: 1; position: relative;">
+      <div class="result-container">
+        <mat-icon class="result1"
+                  (click)="saveCurrentVersion()"
+                  [mat-dialog-close]='true'
+                  matTooltip="Guardar Revision Actual"
+                  matRipple>check</mat-icon>
+      </div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Leave a comment</mat-label>
+        <textarea
+          [(ngModel)]="versionResult"
+          rows="20" id="text"
+          matInput
+          >
+        </textarea>
+      </mat-form-field>
+    </div>
+    <div id="display-right">
+      <p>{{ data.currentVersion.text }}</p>
+    </div>
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align='end'>
+  <button mat-button mat-dialog-close cdkfocusinitial>Cerrar</button>
+</mat-dialog-actions>
+

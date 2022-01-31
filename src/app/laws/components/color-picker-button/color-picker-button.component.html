@@ -1,0 +1,25 @@
+<div class="color-picker-container">
+  <button (click)="openColorPicker()"
+    [className]="activeClass$ | async"
+    title="Select color"
+  >
+    <mat-icon>highlight_alt</mat-icon>
+  </button>
+  <input class="color-input"
+      [class.hide]="colorPickerService.activedSelectionMode$ | async"
+      [colorPicker]="currentColor"
+      [cpOKButton]="true"
+      [cpCancelButton]="true"
+      [cpPresetColors]="['#fff', '#000', '#2889e9', '#e920e9', '#fff500', 'rgb(236,64,64)']"
+      [style.background]="currentColor"
+      (colorPickerSelect)="onSelectColor($event)"
+      (colorPickerCancel)="onCancel()"
+  />
+</div>
+<button mat-icon-button aria-label="Reset color"
+  (click)="colorPickerService.resetColor()"
+  title="Reset color"
+  [disabled]="!(colorPickerService.selectedColor$ | async)"
+>
+  <mat-icon>format_color_reset</mat-icon>
+</button>

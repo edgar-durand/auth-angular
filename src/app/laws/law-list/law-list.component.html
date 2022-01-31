@@ -1,0 +1,24 @@
+<div class="page-content">
+  <div class="image">
+    <img src="/assets/images/leyes_reglamentos_decretos_fines_fiscales.jpg" alt="login logo" draggable="false" />
+  </div>
+  <mat-card *ngIf="lawsService.laws$ | async as laws">
+    <mat-card-header>
+      <mat-card-title>Listado de leyes</mat-card-title>
+      <button mat-mini-fab color="primary" (click)="addLaw()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-nav-list>
+        <div *ngFor="let law of laws" class="law-list">
+          <a mat-list-item routerLink="/laws/{{ law.id }}"> {{ law.name + ' (' + law.currentVersion + ')' }}</a>
+          <button mat-mini-fab title="Agregar revision" color="primary"
+                  (click)="addReviewToLaw(law.id, law.name, law.currentVersion)">
+            <mat-icon>assignment</mat-icon>
+          </button>
+        </div>
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+</div>

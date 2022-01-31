@@ -1,0 +1,4 @@
+<div>
+  <p [innerHTML]="highlightedValue$ | async"></p>
+  <div (mouseup)="onMouseUp()">{{ text }}</div>
+</div>

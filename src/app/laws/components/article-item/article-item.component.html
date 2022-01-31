@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-2 dif-btn">
+    <h2 class="">Artículo {{ article.number }} {{article.type === 'transitorio' ? '(TRANSITORIO)' : ''}}</h2>
+
+    <div>
+      <button mat-stroked-button *ngIf="articleContents$.value.length > 1 && areTherePending" (click)="showDif( true)">
+        Crear revision
+        <mat-icon svgIcon="dif"></mat-icon>
+      </button>
+      <h2 *ngIf="articleContents$.value.length > 1 && !areTherePending" class="reviewed">Articulo Revisado</h2>
+    </div>
+
+  </div>
+</div>
+
+<mat-accordion multi>
+  <app-article-content-item
+    *ngFor="let articleContent of (articleContents$ | async);index as i"
+    (editRevision)="handleEdit($event)"
+    [hasMoreVersions]="articleContents$.value.length > 1"
+    [hasPreviousVersions]="!!(articleContents$.value[i-1] && articleContents$.value[i-1].textOk)"
+    [articleContent]="articleContent"
+  ></app-article-content-item>
+</mat-accordion>

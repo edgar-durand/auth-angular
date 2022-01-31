@@ -1,0 +1,50 @@
+<ng-container *ngIf="law$ | async as law else loading">
+  <div class="row">
+    <div
+      [class.col-8]="(commentService.isCommentSectionOpen$ | async)"
+      [class.col-11]="!(commentService.isCommentSectionOpen$ | async)"
+    >
+      <div class="law-name">
+        <h1>Ley {{ law.name }}</h1>
+      </div>
+
+      <mat-chip-list>
+        <mat-chip [selected]="(lawsService.selectedLawVersion$ | async) === allOptions"
+                  (click)="onSelectVersion(allOptions)">Todas
+        </mat-chip>
+        <mat-chip *ngFor="let version of law.versions" [selected]="(lawsService.selectedLawVersion$ | async) === version"
+                  (click)="onSelectVersion(version)">{{ version }}</mat-chip>
+      </mat-chip-list>
+      <ng-container>
+        <div class="btn-paginator">
+          <mat-paginator [length]="paginator.listLength"
+                         [pageSize]="paginator.perPage"
+                         [pageSizeOptions]="[5, 10, 25, 100]"
+                         (page)="handlePage($event)"
+                         aria-label="Select page">
+          </mat-paginator>
+<!--          <button mat-mini-fab color="primary" [disabled]="!(paginator.page > 1)" (click)="prev()"><mat-icon>navigate_before</mat-icon></button>-->
+<!--          <button mat-mini-fab color="primary" [disabled]="!(this.paginator.page < this.paginator.totalOfPages)" (click)="next()"><mat-icon>navigate_next</mat-icon></button>-->
+        </div>
+      </ng-container>
+      <ng-container *ngIf="articles.length else loading">
+        <div *ngFor="let article of articles">
+          <app-article-item
+            *ngIf="hasText(article.versions)"
+            [article]="article">
+          </app-article-item>
+        </div>
+      </ng-container>
+
+    </div>
+    <app-side-divider class="col-1 side-divider-end" [isExpanded]="commentService.isCommentSectionOpen$.value"></app-side-divider>
+    <div class="comments-container col-3" *ngIf="commentService.isCommentSectionOpen$ | async">
+      <app-comment-list class="sticky"></app-comment-list>
+    </div>
+  </div>
+
+</ng-container>
+
+<ng-template #loading>
+  Cargando...
+</ng-template>

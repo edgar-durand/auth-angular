@@ -1,0 +1,63 @@
+<h1>Perfil del usuario</h1>
+<div class="profile-container">
+  <mat-card class="secctions col-10">
+    <mat-card-header>
+      <mat-card-title>
+        Cambiar imagen
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="col-12 picture">
+      <img [src]="userImage" class="user-logo" alt="logo"/>
+      <label mat-ripple for="file" title="Seleccione una imagen de perfil" class="custom-file-upload">
+        <input id="file" type="file"
+              (change)="handleSelect($event)"
+               accept="image/*"
+        />
+          <mat-icon  mat-ripple>
+            camera_alt
+          </mat-icon>
+      </label>
+      <button class="upload-btn" color="primary" mat-raised-button type="button" (click)="handleUpload()" *ngIf="showUploadBtn">Actualizar</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="secctions col-10">
+    <mat-card-header class="col-12">
+      <mat-card-title>
+        Cambiar contraseña
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="formChangePassword" (ngSubmit)="changePassword();">
+        <mat-form-field class="col-8">
+          <mat-label>Contraseña anterior</mat-label>
+          <label for="oldpassword"></label><input matInput id="oldpassword" formControlName="oldPassword" type="password" required>
+
+          <mat-hint align="end">Mínimo 6 caracteres</mat-hint>
+          <mat-error *ngIf="hasError('oldPassword', 'required')">Contraseña requerida</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-8">
+          <mat-label>Nueva contraseña</mat-label>
+          <label for="newPassword"></label><input matInput id="newPassword" formControlName="newPassword" type="password" required>
+
+          <mat-error *ngIf="hasError('newPassword', 'required')">Contraseña requerida</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-8">
+          <mat-label>Confirmar contraseña</mat-label>
+          <input matInput formControlName="confirm_password" type="password" required>
+          <mat-error *ngIf="hasError('confirm_password', 'required')">Contraseña requerida</mat-error>
+          <mat-error *ngIf="hasError('confirm_password', 'notsame')">Las contraseñas no coinciden</mat-error>
+        </mat-form-field>
+
+        <div class="form-group mt-4">
+          <button mat-raised-button type="submit" color="primary" class="btn-block"
+                  [disabled]="!formChangePassword.valid">
+            Cambiar contraseña
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+}
+
+.color-picker-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+}
+
+.color-picker-button {
+  border: 0;
+  display: flex;
+  opacity: 1;
+  transition: opacity .5s;
+
+  &.active {
+    opacity: .3;
+  }
+}
+
+.color-input {
+  border: 0;
+  height: 1px;
+  width: 100%;
+}
+
+.hide {
+  opacity: 0;
+}

@@ -1,0 +1,39 @@
+<ng-container *ngIf="commentService.currentHighlight$ | async as currentHighlight; else noHighlight">
+  <div
+    class="highlight-comments-wrapper"
+    *ngIf="commentService.highlightComments$ | async as highlightComments; else loadingComments"
+  >
+    <ng-container *ngIf="highlightComments.length === 0">
+      <div class="row justify-content-center">
+        <span class="text-no-resultados">Sin comentarios</span>
+      </div>
+    </ng-container>
+    <div *ngIf="highlightComments.length > 0" class="coments-container">
+      <ng-container *ngFor="let comment of highlightComments">
+        <app-comment-card [comment]="comment"
+        ></app-comment-card>
+      </ng-container>
+    </div>
+
+    <div class="row justify-content-center">
+      <button mat-fab color="primary" 
+        aria-label="Add new comment"
+        text="Add new comment"
+        (click) = "handleClickAdd()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+  </div>
+</ng-container>
+
+<ng-template #noHighlight>
+  <div class="row justify-content-center">
+    <span class="text-no-resultados">Seleccione una sección marcada para mostrar los comentarios</span>
+  </div>
+</ng-template>
+
+<ng-template #loadingComments>
+  <mat-spinner></mat-spinner>
+</ng-template>

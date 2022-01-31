@@ -1,0 +1,65 @@
+<div class="contents col-10">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="border-secondary rounded-top">
+        <div class="card-body">
+           <h1>Iniciar sesión</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contents col-10">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="border-secondary rounded-top">
+        <div class="card-body">
+          <mat-error *ngIf="loginError!=''" class="text-center m-auto"><small>{{loginError}} </small></mat-error>
+
+          <div class="row">
+            <div class="col-12 text-center">
+              <form class="form-signin container-fluid" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <mat-form-field class="col-12">
+                  <mat-label>Usuario</mat-label>
+                  <label for="user"></label><input id="user" matInput formControlName="user" required>
+                  <mat-error *ngIf="hasError('user', 'required')">Usuario requerido</mat-error>
+                  <mat-error *ngIf="hasError('user', 'minLength')">Usuario inválido</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-12">
+                  <mat-label>Contraseña</mat-label>
+                  <label for="pass"></label><input id="pass" matInput formControlName="password" type="password" required>
+                  <mat-hint align="end">Mínimo 6 caracteres</mat-hint>
+                  <mat-error *ngIf="hasError('password', 'required')">Contraseña requerida</mat-error>
+                  <mat-error *ngIf="hasError('password', 'minlength')">Contraseña muy corta</mat-error>
+                </mat-form-field>
+
+                <div class="form-group mt-5">
+                  <button mat-raised-button type="submit" color="primary" class="btn-block"
+                          [disabled]="!loginForm.valid">
+                    Entrar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="contents col-10">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="border-secondary rounded-top">
+        <div class="row card-header border-secondary"></div>
+        <div class="row card-body">
+          <a routerLink="/forgot">Olvidaste la contraseña ?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

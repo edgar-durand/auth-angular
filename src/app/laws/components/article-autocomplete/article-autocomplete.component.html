@@ -1,0 +1,36 @@
+<mat-form-field class="chip-list-wrapper">
+  <mat-label>Artículo relacionado</mat-label>
+  <mat-chip-list #chipList aria-label="Seleccionar artículo" class="chip-list">
+    <mat-chip
+      *ngFor="let article of (relatedArticles)"
+      [selectable]="true"
+      [removable]="true"
+      (removed)="removeArticle(article)">
+      {{article}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input
+      class="input-text"
+      placeholder="Escriba el ID del articulo a relacionar"
+      #articleInput
+      [formControl]="articleControl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="addNewChip($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="handleSelectArticle($event)">
+    <mat-option *ngFor="let article of filteredOptions | async" [value]="article.number">
+      {{article.number}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
+
+<button
+  mat-icon-button
+  aria-label="Salvar artículos relacionados"
+  title="Salvar artículos relacionados"
+>
+  <mat-icon *ngIf="!isListInSync" (click)="handleSyncArticleList()" >save</mat-icon>
+</button>
+

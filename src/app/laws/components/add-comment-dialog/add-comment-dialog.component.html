@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+  <form [formGroup]='form'>
+    <mat-form-field>
+      <mat-label>{{data.subtitle}}</mat-label>
+      <textarea matInput rows="3" formControlName='content' ></textarea>
+      <mat-error *ngIf="getControl('content')?.errors?.required">
+        Campo requerido
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="handleCloseModal()">Cancelar</button>
+  <button mat-button (click)="handleOk()" [disabled]="form.invalid" cdkFocusInitial>Ok</button>
+</div>

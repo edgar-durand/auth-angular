@@ -1,0 +1,6 @@
+<button mat-stroked-button class="divider"  (click)="toggleExpanded($event);" *ngIf="isExpanded">
+  <mat-icon class="icon" svgIcon="angle-right" aria-hidden="false" aria-label="Collapse panel"></mat-icon>
+</button>
+<button mat-stroked-button class="divider" (click)="toggleExpanded($event);" *ngIf="!isExpanded">
+  <mat-icon class="icon" svgIcon="angle-left" aria-hidden="false" aria-label="Expand panel"></mat-icon>
+</button>

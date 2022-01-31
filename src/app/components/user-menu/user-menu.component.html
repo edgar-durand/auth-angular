@@ -1,0 +1,19 @@
+<img [src]="authService.currentUserValue?.img" alt="avatar" class="user-logo"
+     *ngIf="authService.currentUserValue?.img" [matMenuTriggerFor]="appMenu">
+<mat-menu #appMenu>
+  <ng-template matMenuContent>
+    <div class="menu-card">
+      <img [src]="authService.currentUserValue?.img" alt="avatar" class="card-logo" *ngIf="authService.currentUserValue?.img">
+      <div class="white-rounded">
+      </div>
+      <h3 class="text-white">{{authService.currentUserValue?.username}}</h3>
+    </div>
+    <button mat-menu-item (click)="handleProfile()">
+      <mat-icon>settings</mat-icon>Mi Perfil
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon> Cerrar Sesión
+    </button>
+  </ng-template>
+</mat-menu>

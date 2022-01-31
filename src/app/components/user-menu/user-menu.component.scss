@@ -1,0 +1,52 @@
+.user-logo {
+  margin-right: 10px!important;
+  margin-left: 20px;
+  border-radius: 50px!important;
+  object-fit: contain;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+}
+
+.card-logo {
+  margin: 0;
+  padding: 0;
+  border-radius: 50px!important;
+  object-fit: contain;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px!important;
+}
+
+.gray-bg {
+  color: #4b4b4b !important;
+  text-align: center!important;
+  margin: auto !important;
+}
+
+.text-white {
+  display: flex;
+  color: white;
+  text-align: center!important;
+}
+
+.menu-card {
+  height: 150px;
+  width: 250px;
+  background-color: #4c3aae;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center!important;
+}
+
+.white-rounded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px!important;
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px!important;
+}

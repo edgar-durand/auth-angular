@@ -1,0 +1,14 @@
+.text-no-resultados {
+  text-align: center;
+}
+
+.coments-container {
+  display: flex;
+  flex-direction: column;
+}
+.coments-container > * {
+  margin: 8px;
+}
+.justify-content-center {
+  justify-content: center;
+}

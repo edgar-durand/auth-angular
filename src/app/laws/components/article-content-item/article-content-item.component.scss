@@ -1,0 +1,10 @@
+mat-panel-description {
+  justify-content: flex-end;
+}
+::ng-deep.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+  display: flex;
+  flex-grow: 1;
+  margin-right: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
