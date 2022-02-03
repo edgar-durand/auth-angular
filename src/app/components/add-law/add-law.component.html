@@ -1,32 +1,32 @@
 <h2 mat-dialog-title *ngIf="!data?.isRevision">Crear nueva ley</h2>
 <h2 mat-dialog-title *ngIf="data?.isRevision">Crear revision de la ley</h2>
 <mat-dialog-content class='mat-typography'>
-  <p *ngIf="!data?.isRevision">Complete los campos para agregar nueva ley</p>
-  <p *ngIf="data?.isRevision">Seleccione el PDF con la revision correspondiente a esta ley</p>
-  <form [formGroup]='addForm' novalidate class='my-form' enctype='multipart/form-data'>
+    <p *ngIf="!data?.isRevision">Complete los campos para agregar nueva ley</p>
+    <p *ngIf="data?.isRevision">Seleccione el PDF con la revision correspondiente a esta ley</p>
+    <form [formGroup]='addForm' novalidate class='my-form' enctype='multipart/form-data'>
 
-    <mat-form-field>
-      <input *ngIf="!data?.isRevision" required class='input' matInput type='text' placeholder='Nombre de la Ley' formControlName='lawName'>
-      <input *ngIf="data?.isRevision" class='input' matInput type='text' [value]="data?.lawName" [disabled]="true">
-    </mat-form-field>
+        <mat-form-field>
+            <input *ngIf="!data?.isRevision " required class='input' matInput type='text' placeholder='Nombre de la Ley' formControlName='lawName'>
+            <input *ngIf="data?.isRevision" class='input' matInput type='text' [value]="data?.lawName" [disabled]="true">
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Fecha</mat-label>
-      <input matInput formControlName='lawDate' [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker startView="year" [startAt]="startDate" #picker></mat-datepicker>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha</mat-label>
+            <input matInput formControlName='lawDate' [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker startView="year" [startAt]="startDate" #picker></mat-datepicker>
+        </mat-form-field>
 
-<!--    <mat-form-field>-->
-<!--      <mat-datepicker formControlName='lawDate'></mat-datepicker>-->
-<!--    </mat-form-field>-->
+        <!--    <mat-form-field>-->
+        <!--      <mat-datepicker formControlName='lawDate'></mat-datepicker>-->
+        <!--    </mat-form-field>-->
 
 
-      <input matInput type='file' (change)="addFile($event)" accept="application/pdf">
+        <input matInput type='file' (change)="addFile($event)" accept="application/pdf">
 
-  </form>
+    </form>
 </mat-dialog-content>
 <mat-dialog-actions align='end'>
-  <button mat-button mat-dialog-close cdkfocusinitial>Cancel</button>
-  <button mat-button [mat-dialog-close]='true' [disabled]='!addForm.valid'>Create</button>
+    <button mat-button mat-dialog-close cdkfocusinitial>Cancel</button>
+    <button mat-button [mat-dialog-close]='true' [disabled]='!addForm.valid'>Create</button>
 </mat-dialog-actions>
